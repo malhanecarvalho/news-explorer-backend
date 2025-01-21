@@ -9,6 +9,7 @@ const routerUser = require("./routes/users");
 const routerAuth = require("./routes/auth");
 const bodyParser = require('body-parser');
 const User = require("./models/user");
+const { DATABASE} = process.env
 
 const app = express();
 app.use(cors());
@@ -20,7 +21,7 @@ async function ensureCollectionsExits() {
 }
 
 async function connectMongoose() {
-  await mongoose.connect("mongodb://localhost:27017/news", {
+  await mongoose.connect(`mongodb+srv://malhanesilva26:${DATABASE}@clustermy.jw5r3.mongodb.net/`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
